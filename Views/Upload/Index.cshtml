@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WelderTracker150722.Models.ExcelModel>
+@addTagHelper*, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewData["Title"] = "Upload Page";
+}
+
+<div class="text-center">
+    <form asp-controller="Upload" asp-action="Index" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-6">
+                <input type="file" name="postedFile" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 mt-3">
+                <input type="submit" value="Import" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>
+
+<form asp-controller="Upload" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table table-bordered table-striped table-sm table-hover" style="width:90%">
+    <thead class="thead thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+           
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+      @{
+          foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                
+            </tr>
+}}
+    </tbody>
+
+</table>
+

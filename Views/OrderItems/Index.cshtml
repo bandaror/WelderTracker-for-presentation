@@ -1,0 +1,99 @@
+﻿@model IEnumerable<WelderTracker150722.Models.OrderItemsModel>
+@using WelderTracker150722.Models
+@using Microsoft.AspNetCore.Authorization;
+
+@{
+    
+    ViewData["Title"] = "Orders";
+   
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+  
+</p>
+<form asp-controller="OrderItems" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table table-bordered table-striped table-sm table-hover" style="width:90%">
+    <thead class="thead thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirNumber)
+            </th>
+            <th>
+               <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]"> @Html.DisplayNameFor(model => model.ItemName)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+              <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">  @Html.DisplayNameFor(model => model.ToCompleteBy)</a>
+                <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.CompletedAmount)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.WeldersId)
+            </th>
+            
+            
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            string backgColor ="";
+            foreach (var item in Model) {
+                var status = item.Status;
+                if (status == OrderStatus.Completed)
+                    backgColor = "green";
+                if(status == OrderStatus.Started)
+                    backgColor = "yellow";
+                if (status == OrderStatus.Awaiting)
+                    backgColor = "";
+                <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToCompleteBy)
+                </td>
+                
+                
+                      
+                        
+
+                  <td style="background-color:@backgColor">
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td> 
+                 <td>
+                    @Html.DisplayFor(modelItem => item.CompletedAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WeldersId)
+                </td>
+
+                <td>
+               
+                    <a asp-action="Edit" asp-route-id="@item.Id"><button class="btn btn-info">Edit</button></a> 
+                    <a asp-action="Details" asp-route-id="@item.Id"><button class="btn btn-success">Details</button></a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id"><button class="btn btn-danger">Delete</button></a>
+                </td>
+            </tr>
+}
+}
+    </tbody>
+</table>

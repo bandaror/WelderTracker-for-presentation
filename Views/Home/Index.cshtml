@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Here you can find details about the Welder Tracker App.</a>.</p>
+    <h4>Most of the functions are available for anyone who register or login with a demo account (user:demo@test.com, password: Test@1234).</h4>
+</div>
+
+<div>
+    <h5>Purpose</h5>
+    <p>
+    The application is made for a welding cell in a manufacturing company and its goal is to provide a platform where the orders placed by the clients are presented
+    in a clear and simple fashion, and support the supervisors with productivity information about each welder.
+    </p>
+    <h5>Main stakeholders</h5>
+    <p>
+    The staff involved are the welders, supervisors and the director of operatives.
+    The application supports the welders with sorting, searching and marking options to improve the useability.
+    The supervisors will be able to track the productivity of each welder and use it to calculate the efficiency which than can be presented to the director of operatives.
+    <p/>
+    <h5>Contents</h5>
+    <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Main page
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+       The main page consists a list of orders. This list is visible for everyone (in our case all the welders). 
+       Every order can have three states: awaiting, started(marked as yellow, and finished(marked as red).
+       The application also provide sorting and searching functionalities. 
+       With the edit function the welders can mark the state of the item accordingly.
+       Once a welder is picked an order, he/she needs to provide the number of the welding bay, and mark the order as started.
+       Once an order is finished, the item will be recorded with the corresponding welder and the completion day under the Completed Items table.
+       From this, the supervisor can track the efficiency of each individual.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Upload Page
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The supervisor is responsible to upload the weekly list of orders.
+        This functionality is only available to users under the admin category.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Welders Page
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        The supervisor is responsible to register and maintain the welders. The application use the Id of a welder from this table to connect it with the orders table.      </div>
+    </div>
+  </div>
+</div>
+<div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+        Completed Items Page
+      </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        This page holds the welded items with the Id of the welder, the amount the items and the completion date.
+        The page provide a filter for the items, and for a selected time range.
+      </div>
+    </div>
+  </div>
+
+    <h5>Limitations</h5>
+    <p>
+    As the application is used for my university final year project, some functionalities are limited only for the users with admin role.
+    The application is dependent on the weekly upload of the orders and the maintenance of the welders table by the supervisor.
+    The application is deployed on Azure under free tier, thefore the provided resources are limited.
+    </p>
+    <h5> Other</h5>
+    <p>The application is developed in Visual Studio using the ASP.NET MVC framework, and published on Azure.</p>
+    
+</div>

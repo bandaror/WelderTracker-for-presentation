@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WelderTracker150722.Models.CompletedItemModel>
+@using WelderTracker150722.Models
+@{
+    ViewData["Title"] = "Completed Items";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="CompletedItemModels" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchInt" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<form asp-controller="CompletedItemModels" asp-action="Index">
+    <p>
+
+        From: <input type="date" name="start" />
+       
+    
+        To: <input type="date" name="end" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table table-bordered table-striped table-sm table-hover" >
+    <thead>
+        <tr>
+            <th>
+               <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">  @Html.DisplayNameFor(model => model.ItemName)</a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+               <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">  @Html.DisplayNameFor(model => model.DateofCompletition)</a>
+            </th>
+            <th>
+               <a asp-action="Index" asp-route-sortOrder="@ViewData["WeldersSortParm"]">   @Html.DisplayNameFor(model => model.WelderId)</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateofCompletition)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WelderId)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
